@@ -10,6 +10,7 @@ import { ListadoComponent } from './pages/listado/listado.component';
 import { HeroesRoutingModule } from './heroes-routing.module';
 import { MaterialModule } from '../material/material.module';
 import { HeroeTarjetaComponent } from './components/heroe-tarjeta/heroe-tarjeta.component';
+import { ImagenPipe } from './pipe/imagen.pipe';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { HeroeTarjetaComponent } from './components/heroe-tarjeta/heroe-tarjeta.
     HomeComponent,
     ListadoComponent,
     HeroeTarjetaComponent,
+    ImagenPipe,
   ],
   imports: [
     CommonModule,
