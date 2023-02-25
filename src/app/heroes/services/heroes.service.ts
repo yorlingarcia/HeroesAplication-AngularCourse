@@ -9,7 +9,7 @@ import { Heroe } from '../interfaces/heroes.interfaces';
 export class HeroesService {
   constructor(private http: HttpClient) {}
   getHeores(): Observable<Heroe[]> {
-    return this.http.get<Heroe[]>('http://localhost:3000/heroes');
+    return this.http.get<Heroe[]>('/heroes');
   }
 
   getHeroePorId(id: string): Observable<Heroe> {
