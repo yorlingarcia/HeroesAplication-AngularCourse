@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Heroe } from '../../interfaces/heroes.interfaces';
 import { HeroesService } from '../../services/heroes.service';
 
 @Component({
@@ -7,11 +8,15 @@ import { HeroesService } from '../../services/heroes.service';
   styles: [],
 })
 export class ListadoComponent implements OnInit {
+  heroes: Heroe[] = [];
+
   constructor(private heroesService: HeroesService) {}
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-    this.heroesService.getHeores().subscribe((resp) => console.log(resp));
+    this.heroesService.getHeores().subscribe((resp) => {
+      this.heroes = resp;
+    });
   }
 }
