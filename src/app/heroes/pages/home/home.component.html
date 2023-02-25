@@ -1,8 +1,10 @@
 <mat-drawer-container fullscreen>
-  <mat-sidenav>
+  <mat-sidenav #sidenav>
     <h1>sidenav</h1>
   </mat-sidenav>
   <mat-toolbar>
-    <button mat-button>menu</button>
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
   </mat-toolbar>
 </mat-drawer-container>
