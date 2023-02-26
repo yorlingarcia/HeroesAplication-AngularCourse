@@ -15,7 +15,7 @@ export class BuscarComponent {
 
   buscando() {
     this.heroesService
-      .getHeores()
+      .getSugerencias(this.termino)
       .subscribe((heroes) => (this.heroes = heroes));
   }
 }
