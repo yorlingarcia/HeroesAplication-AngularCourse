@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Heroe, Publisher } from '../../interfaces/heroes.interfaces';
 import { HeroesService } from '../../services/heroes.service';
 
@@ -7,7 +8,7 @@ import { HeroesService } from '../../services/heroes.service';
   templateUrl: './agregar.component.html',
   styles: [],
 })
-export class AgregarComponent {
+export class AgregarComponent implements OnInit {
   heroe: Heroe = {
     superhero: '',
     publisher: Publisher.DCComics,
@@ -27,7 +28,16 @@ export class AgregarComponent {
     },
   ];
 
-  constructor(private heroesServices: HeroesService) {}
+  constructor(
+    private heroesServices: HeroesService,
+    private activateRouted: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    this.activateRouted.params.subscribe(({ id }) => console.log(id));
+  }
 
   guardar() {
     if (this.heroe.superhero.trim().length === 0) {
