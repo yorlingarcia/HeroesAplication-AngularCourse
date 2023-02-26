@@ -58,7 +58,9 @@ export class AgregarComponent implements OnInit {
       //crear nuevo registro
       this.heroesServices
         .agregarHeroe(this.heroe)
-        .subscribe((heroe) => this.router.navigate(['/heroes', heroe.id]));
+        .subscribe((heroe) =>
+          this.router.navigate(['/heroes/editar', heroe.id])
+        );
     }
   }
 }
