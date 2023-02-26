@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Heroe, Publisher } from '../../interfaces/heroes.interfaces';
 import { HeroesService } from '../../services/heroes.service';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-agregar',
@@ -36,7 +37,9 @@ export class AgregarComponent implements OnInit {
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-    this.activateRouted.params.subscribe(({ id }) => console.log(id));
+    this.activateRouted.params
+      .pipe(switchMap(({ id }) => this.heroesServices.getHeroePorId(id)))
+      .subscribe(({ id }) => console.log(id));
   }
 
   guardar() {
