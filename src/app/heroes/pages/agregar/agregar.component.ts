@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 
 import { Heroe, Publisher } from '../../interfaces/heroes.interfaces';
@@ -32,7 +32,8 @@ export class AgregarComponent implements OnInit {
 
   constructor(
     private heroesServices: HeroesService,
-    private activateRouted: ActivatedRoute
+    private activateRouted: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -57,7 +58,7 @@ export class AgregarComponent implements OnInit {
       //crear nuevo registro
       this.heroesServices
         .agregarHeroe(this.heroe)
-        .subscribe((heroe) => console.log('Respuesta: ', heroe));
+        .subscribe((heroe) => this.router.navigate(['/heroes', heroe.id]));
     }
   }
 }
