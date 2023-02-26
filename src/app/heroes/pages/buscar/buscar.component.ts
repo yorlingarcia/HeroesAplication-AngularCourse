@@ -11,14 +11,16 @@ import { HeroesService } from '../../services/heroes.service';
 export class BuscarComponent {
   termino: string = '';
   heroes: Heroe[] = [];
-  heroeSelccionado!: Heroe;
+  heroeSelccionado: Heroe | undefined;
 
   constructor(private heroesService: HeroesService) {}
 
   buscando() {
-    this.heroesService.getSugerencias(this.termino).subscribe((heroes) => {
-      this.heroes = heroes;
-    });
+    this.heroesService
+      .getSugerencias(this.termino.trim())
+      .subscribe((heroes) => {
+        this.heroes = heroes;
+      });
   }
 
   opcionSelecionada(event: MatAutocompleteSelectedEvent) {
@@ -26,6 +28,8 @@ export class BuscarComponent {
     this.termino = heroe.superhero;
     //this.heroeSelccionado = heroe;
     if (this.heroes.length < 1) {
+      console.log('No hay ningun valor');
+      this.heroeSelccionado = undefined;
       return;
     }
     this.heroesService
