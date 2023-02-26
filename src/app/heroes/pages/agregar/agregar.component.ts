@@ -48,6 +48,12 @@ export class AgregarComponent implements OnInit {
       return;
     }
 
+    if (this.heroe.id) {
+      //actualizar
+    } else {
+      //crear nuevo registro
+    }
+
     this.heroesServices
       .agregarHeroe(this.heroe)
       .subscribe((heroe) => console.log('Respuesta: ', heroe));
