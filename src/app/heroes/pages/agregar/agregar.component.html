@@ -5,23 +5,28 @@
     <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">
       <mat-form-field fxFlex="100" fxLayout.xs="column" appearance="fill">
         <mat-label>Super Heroe</mat-label>
-        <input matInput type="text" required />
+        <input matInput type="text" required [(ngModel)]="heroe.superhero" />
       </mat-form-field>
 
       <mat-form-field fxFlex="100" appearance="fill">
         <mat-label>Alter ago</mat-label>
-        <input matInput type="text" required />
+        <input matInput type="text" required [(ngModel)]="heroe.alter_ego" />
       </mat-form-field>
     </div>
 
     <mat-form-field fxFlex="100" appearance="fill">
       <mat-label>Primera aparicion</mat-label>
-      <input matInput type="text" required />
+      <input
+        matInput
+        type="text"
+        required
+        [(ngModel)]="heroe.first_appearance"
+      />
     </mat-form-field>
 
     <mat-form-field fxFlex="100" appearance="fill">
       <mat-label>Personajes</mat-label>
-      <input matInput type="text" required />
+      <input matInput type="text" required [(ngModel)]="heroe.characters" />
     </mat-form-field>
 
     <mat-form-field fxFlex="100" appearance="fill">
@@ -37,10 +42,10 @@
 
     <mat-form-field fxFlex="100" appearance="fill">
       <mat-label>Foto Url</mat-label>
-      <input matInput type="text" required />
+      <input matInput type="text" required [(ngModel)]="heroe.alt_img" />
     </mat-form-field>
     <br />
-    <button mat-fab extended color="primary">
+    <button mat-fab extended color="primary" (click)="guardar()">
       <mat-icon>save</mat-icon>
       Guardar
     </button>

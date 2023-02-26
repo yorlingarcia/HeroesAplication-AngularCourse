@@ -25,4 +25,10 @@ export class AgregarComponent {
       desc: 'Marvel - Comics',
     },
   ];
+
+  guardar() {
+    if (this.heroe.superhero.trim().length === 0) {
+      return;
+    }
+  }
 }
