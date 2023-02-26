@@ -7,6 +7,7 @@ import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { HttpClientModule } from '@angular/common/http';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [AppComponent, ErrorPageComponent],
@@ -15,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
+    MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
