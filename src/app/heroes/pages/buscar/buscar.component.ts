@@ -16,17 +16,20 @@ export class BuscarComponent {
   constructor(private heroesService: HeroesService) {}
 
   buscando() {
-    this.heroesService
-      .getSugerencias(this.termino)
-      .subscribe((heroes) => (this.heroes = heroes));
+    this.heroesService.getSugerencias(this.termino).subscribe((heroes) => {
+      this.heroes = heroes;
+    });
   }
 
   opcionSelecionada(event: MatAutocompleteSelectedEvent) {
     const heroe: Heroe = event.option.value;
     this.termino = heroe.superhero;
-    this.heroeSelccionado = heroe;
-    // this.heroesService
-    //   .getHeroePorId(heroe.id!)
-    //   .subscribe((heroe) => (this.heroeSelccionado = heroe));
+    //this.heroeSelccionado = heroe;
+    if (this.heroes.length < 1) {
+      return;
+    }
+    this.heroesService
+      .getHeroePorId(heroe.id!)
+      .subscribe((heroe) => (this.heroeSelccionado = heroe));
   }
 }
