@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+
 import { Heroe, Publisher } from '../../interfaces/heroes.interfaces';
 import { HeroesService } from '../../services/heroes.service';
-import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-agregar',
@@ -39,7 +40,7 @@ export class AgregarComponent implements OnInit {
     //Add 'implements OnInit' to the class.
     this.activateRouted.params
       .pipe(switchMap(({ id }) => this.heroesServices.getHeroePorId(id)))
-      .subscribe(({ id }) => console.log(id));
+      .subscribe((heroe) => (this.heroe = heroe));
   }
 
   guardar() {
