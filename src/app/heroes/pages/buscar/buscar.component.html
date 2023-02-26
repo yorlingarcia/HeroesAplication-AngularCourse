@@ -16,7 +16,11 @@
         [matAutocomplete]="auto"
         (input)="buscando()"
       />
-      <mat-autocomplete #auto="matAutocomplete">
+      <mat-autocomplete
+        autoActiveFirstOption
+        #auto="matAutocomplete"
+        (optionSelected)="opcionSelecionada($event)"
+      >
         <mat-option *ngFor="let heroe of heroes" [value]="heroe">
           {{ heroe.superhero }}
         </mat-option>
