@@ -24,5 +24,9 @@ export class BuscarComponent {
   opcionSelecionada(event: MatAutocompleteSelectedEvent) {
     const heroe: Heroe = event.option.value;
     this.termino = heroe.superhero;
+    this.heroeSelccionado = heroe;
+    // this.heroesService
+    //   .getHeroePorId(heroe.id!)
+    //   .subscribe((heroe) => (this.heroeSelccionado = heroe));
   }
 }
