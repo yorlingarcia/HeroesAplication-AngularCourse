@@ -88,6 +88,7 @@ export class AgregarComponent implements OnInit {
   borrar() {
     this.dialog.open(ConfirmarComponent, {
       width: '300px',
+      data: this.heroe,
     });
     // this.heroesServices.eliminarHeroe(this.heroe.id!).subscribe((resp) => {
     //   this.router.navigate(['/heroes']);
