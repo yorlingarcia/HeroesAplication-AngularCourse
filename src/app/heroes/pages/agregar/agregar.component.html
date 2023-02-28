@@ -1,4 +1,7 @@
-<h1>Nuevo Heroe</h1>
+<h1>
+  {{ heroe.id ? "Editar" : "Nuevo" }} Heroe:
+  <small>{{ heroe.superhero }}</small>
+</h1>
 
 <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
   <div fxFlex="50" fxLayout="column">
