@@ -18,9 +18,10 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login() {
-    return this.http
-      .get<Auth>(`${this.baseUrl}/usuarios/1`)
-      .pipe(tap((auth) => (this._auth = auth)));
+    return this.http.get<Auth>(`${this.baseUrl}/usuarios/1`).pipe(
+      tap((auth) => (this._auth = auth)),
+      tap(localStorage.setItem('id', auth.id))
+    );
   }
 
   logout() {
