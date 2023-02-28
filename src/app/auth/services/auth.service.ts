@@ -17,11 +17,11 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  verificaAutorizacion(): Observable<boolean> {
+  verificaAutorizacion(): Observable<boolean> | boolean {
     if (!localStorage.getItem('token')) {
-      return of(false);
+      return false;
     }
-    return of(true);
+    return true;
   }
 
   login() {
