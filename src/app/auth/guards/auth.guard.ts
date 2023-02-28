@@ -6,25 +6,32 @@ import {
   Route,
   RouterStateSnapshot,
   UrlSegment,
-  UrlTree,
 } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanLoad, CanActivate {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    if (this.authService.auth.id) {
-      return true;
-    }
-    console.log('Bloqueado por el authGuard - CanActivate');
-    return false;
+    // if (this.authService.auth.id) {
+    //   return true;
+    // }
+    // console.log('Bloqueado por el authGuard - CanActivate');
+    // return false;
+    return this.authService.verificaAutorizacion().pipe(
+      tap((estaAutenticado) => {
+        if (!estaAutenticado) {
+          this.router.navigate(['./auth/login']);
+        }
+      })
+    );
   }
   canLoad(
     route: Route,
@@ -33,10 +40,18 @@ export class AuthGuard implements CanLoad, CanActivate {
     // console.log('canLoad', false);
     // console.log(route);
     // console.log(segments);
-    if (this.authService.auth.id) {
-      return true;
-    }
-    console.log('Bloqueado por el authGuard - CanLoad');
-    return false;
+
+    // if (this.authService.auth.id) {
+    //   return true;
+    // }
+    // console.log('Bloqueado por el authGuard - CanLoad');
+    // return false;
+    return this.authService.verificaAutorizacion().pipe(
+      tap((estaAutenticado) => {
+        if (!estaAutenticado) {
+          this.router.navigate(['./auth/login']);
+        }
+      })
+    );
   }
 }
